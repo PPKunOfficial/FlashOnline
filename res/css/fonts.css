@@ -1,10 +1,10 @@
 @font-face {
     font-family: MiSansMedium;
-    src: url('/res/fonts/MiSansMedium.ttf');
+    src: url('https://cdn.jsdelivr.net/gh/PPKunOfficial/FlashOnline@master/res/fonts/MiSansMedium.ttf');
 }
 @font-face {
     font-family: MiSansNormal;
-    src: url('/res/fonts/MiSansNormal.ttf');
+    src: url('https://cdn.jsdelivr.net/gh/PPKunOfficial/FlashOnline@master/res/fonts/MiSansNormal.ttf');
 }
 label,
 p,
