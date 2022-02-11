@@ -1,4 +1,6 @@
 # FlashOnline
 Flash Your Phone Online.
 
-Fastboot.js From @kdrag0n
+# Thanks
+## Fastboot.js From @kdrag0n
+## Sideload From Mokee 魔趣
