@@ -124,15 +124,14 @@ document
 document
     .querySelector(".connect-button")
     .addEventListener("click", connectDevice);
-document.querySelector(".flash-form").addEventListener("submit", flashFormFile);
+document
+    .querySelector(".flash-form")
+    .addEventListener("submit", flashFormFile);
 document
     .querySelector(".download-zip-button")
     .addEventListener("click", downloadZip);
 document
     .querySelector(".factory-form")
     .addEventListener("submit", flashSelectedFactoryZip);
-document
-    .querySelector(".flash-zip-button")
-    .addEventListener("click", flashDownloadedFactoryZip);
 
 // @license-end
