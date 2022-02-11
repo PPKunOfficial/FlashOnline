@@ -45,8 +45,8 @@ async function flashFormFile(event) {
     let partField = document.querySelector(".flash-partition");
     let file = fileField.files[0];
     await device.flashBlob(partField.value, file);
-    fileField.value = "";
-    partField.value = "";
+    fileField.value = "刷入完成，请重启查看是否成功";
+    partField.value = "刷入完成，请重启查看是否成功";
 }
 
 function reconnectCallback() {
@@ -95,7 +95,7 @@ async function flashSelectedFactoryZip(event) {
 
 fastboot.configureZip({
     workerScripts: {
-        inflate: ["../dist/vendor/z-worker-pako.js", "pako_inflate.min.js"],
+        inflate: ["/res/fastboot.js/vendor/z-worker-pako.js", "/res/fastboot.js/vendor/pako_inflate.min.js"],
     },
 });
 
