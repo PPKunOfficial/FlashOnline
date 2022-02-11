@@ -23,7 +23,7 @@ async function connectDevice() {
 
     let product = await device.getVariable("product");
     let serial = await device.getVariable("serialno");
-    let status = `Connected to ${product} (serial: ${serial})`;
+    let status = `连接到 ${product} (serial: ${serial})`;
     statusField.textContent = status;
 }
 
@@ -33,6 +33,7 @@ async function sendFormCommand(event) {
     let inputField = document.querySelector(".command-input");
     let command = inputField.value;
     let result = (await device.runCommand(command)).text;
+    console.log(result);
     document.querySelector(".result-field").textContent = result;
     inputField.value = "";
 }
@@ -46,21 +47,6 @@ async function flashFormFile(event) {
     await device.flashBlob(partField.value, file);
     fileField.value = "";
     partField.value = "";
-}
-
-async function downloadZip() {
-    let statusField = document.querySelector(".factory-status-field");
-    statusField.textContent = "下载中...";
-
-    await blobStore.init();
-    try {
-        await blobStore.download("/releases/taimen-factory-2021.01.06.14.zip");
-    } catch (error) {
-        statusField.textContent = `下载错误: ${error.message}`;
-        throw error;
-    }
-
-    statusField.textContent = "已下载";
 }
 
 function reconnectCallback() {
@@ -87,7 +73,8 @@ async function flashFactoryZip(blob) {
             (action, item, progress) => {
                 let userAction = fastboot.USER_ACTION_MAP[action];
                 statusField.textContent = `${userAction} ${item}`;
-                progressBar.value = progress;
+                document.getElementsByName('flash-progress')[0].setAttribute('aria-valuenow',progress*100)
+                //progressBar.aria-valuenow = progress*100;
             }
         );
     } catch (error) {
@@ -106,12 +93,6 @@ async function flashSelectedFactoryZip(event) {
     fileField.value = "";
 }
 
-async function flashDownloadedFactoryZip() {
-    await blobStore.init();
-    let blob = await blobStore.loadFile("taimen-factory-2021.01.06.14.zip");
-    await flashFactoryZip(blob);
-}
-
 fastboot.configureZip({
     workerScripts: {
         inflate: ["../dist/vendor/z-worker-pako.js", "pako_inflate.min.js"],
@@ -127,9 +108,6 @@ document
 document
     .querySelector(".flash-form")
     .addEventListener("submit", flashFormFile);
-document
-    .querySelector(".download-zip-button")
-    .addEventListener("click", downloadZip);
 document
     .querySelector(".factory-form")
     .addEventListener("submit", flashSelectedFactoryZip);
