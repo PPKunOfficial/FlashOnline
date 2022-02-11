@@ -45,7 +45,6 @@ async function flashFormFile(event) {
     let partField = document.querySelector(".flash-partition");
     let file = fileField.files[0];
     await device.flashBlob(partField.value, file);
-    fileField.value = "刷入完成，请重启查看是否成功";
     partField.value = "刷入完成，请重启查看是否成功";
 }
 
