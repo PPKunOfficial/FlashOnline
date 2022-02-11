@@ -140,7 +140,7 @@
                 }
             },
             [e._v(" " + e._s(e.snackbarText) + " ")]), s("v-content", [s("v-container", {
-                staticClass: "container"
+                staticClass: ""
             },
             [s("header", [s("div", {
                 staticClass: "langs"
