@@ -1,0 +1,18 @@
+@font-face {
+    font-family: MiSansMedium;
+    src: url('/res/fonts/MiSansMedium.ttf');
+}
+@font-face {
+    font-family: MiSansNormal;
+    src: url('/res/fonts/MiSansNormal.ttf');
+}
+label,
+p,
+div,
+li,
+span,
+button,
+h2,
+h1 {
+    font-family: MiSansMedium;
+}
